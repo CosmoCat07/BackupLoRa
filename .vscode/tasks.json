@@ -2,11 +2,30 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "Configure Project",
+            "type": "process",
+            "command": "${userHome}/.pico-sdk/cmake/v3.31.5/bin/cmake",
+            "args": [
+                "-S", "${workspaceFolder}",
+                "-B", "${workspaceFolder}/build",
+                "-G", "Ninja"
+            ],
+            "presentation": {
+                "reveal": "always",
+                "panel": "dedicated"
+            },
+            "problemMatcher": [] ,
+            "windows": {
+                "command": "${env:USERPROFILE}/.pico-sdk/cmake/v3.31.5/bin/cmake.exe"
+            }
+        },
+        {
             "label": "Compile Project",
             "type": "process",
             "isBuildCommand": true,
             "command": "${userHome}/.pico-sdk/cmake/v3.31.5/bin/cmake",
             "args": ["--build", "${workspaceFolder}/build"],
+            "dependsOn": ["Configure Project"],
             "group": "build",
             "presentation": {
                 "reveal": "always",

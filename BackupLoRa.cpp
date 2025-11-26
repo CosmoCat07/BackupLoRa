@@ -125,6 +125,7 @@ int main()
 
         // send another one
         printf("[SX1262] Sending another packet ... \n");
+        radio.finishReceive();
         transmissionState = radio.startTransmit("Hello World!");
         transmitFlag = true;
       }
