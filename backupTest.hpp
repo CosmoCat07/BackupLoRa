@@ -10,15 +10,15 @@
 #include <functional>
 
 // define pins to be used
-#define SPI_PORT spi0
-#define SPI_MISO 4
-#define SPI_MOSI 3
-#define SPI_SCK 2
+#define SPI_PORT spi1
+#define SPI_MISO 12
+#define SPI_MOSI 11
+#define SPI_SCK 10
 
-#define RFM_NSS 26
-#define RFM_RST 22
-#define RFM_DIO0 14
-#define RFM_DIO1 15
+#define RFM_NSS 3
+#define RFM_RST 15
+#define RFM_DIO1 20
+#define RFM_BUSY 2
 
 
 

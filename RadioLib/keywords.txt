@@ -234,7 +234,6 @@ getTimeOnAir	KEYWORD2
 calculateTimeOnAir KEYWORD2
 implicitHeader	KEYWORD2
 explicitHeader	KEYWORD2
-setSyncBits	KEYWORD2
 setWhitening	KEYWORD2
 startReceiveDutyCycle	KEYWORD2
 startReceiveDutyCycleAuto	KEYWORD2
@@ -307,7 +306,9 @@ beginBLE	KEYWORD2
 setAccessAddress	KEYWORD2
 range	KEYWORD2
 startRanging	KEYWORD2
+finishRanging	KEYWORD2
 getRangingResult	KEYWORD2
+getRangingResultRaw	KEYWORD2
 
 # Hellschreiber
 printGlyph	KEYWORD2

@@ -224,7 +224,8 @@ int16_t SX126x::setBitRate(float br) {
   }
 
   if(modem == RADIOLIB_SX126X_PACKET_TYPE_LR_FHSS) {
-    RADIOLIB_CHECK_RANGE(br, 0.6f, 300.0f, RADIOLIB_ERR_INVALID_BIT_RATE);
+    // at the moment only the very specific 488.28125 bps rate is supported
+    RADIOLIB_CHECK_RANGE(br, 0.488f, 0.489f, RADIOLIB_ERR_INVALID_BIT_RATE);
   } else if(modem == RADIOLIB_SX126X_PACKET_TYPE_BPSK) {
     // this should be just either 100 or 600 bps, not the range
     // but the BPSK support is so experimental it probably does not matter
@@ -485,25 +486,6 @@ int16_t SX126x::setSyncWord(uint8_t* syncWord, size_t len) {
   }
 
   return(RADIOLIB_ERR_WRONG_MODEM);
-}
-
-int16_t SX126x::setSyncBits(uint8_t *syncWord, uint8_t bitsLen) {
-  // check active modem
-  if(getPacketType() != RADIOLIB_SX126X_PACKET_TYPE_GFSK) {
-    return(RADIOLIB_ERR_WRONG_MODEM);
-  }
-
-  // check sync word Length
-  if(bitsLen > 0x40) {
-    return(RADIOLIB_ERR_INVALID_SYNC_WORD);
-  }
-
-  uint8_t bytesLen = bitsLen / 8;
-  if ((bitsLen % 8) != 0) {
-    bytesLen++;
-  }
-
-  return(setSyncWord(syncWord, bytesLen));
 }
 
 int16_t SX126x::setCRC(uint8_t len, uint16_t initial, uint16_t polynomial, bool inverted) {

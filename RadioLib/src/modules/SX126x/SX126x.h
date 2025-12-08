@@ -473,15 +473,6 @@ class SX126x: public PhysicalLayer {
     int16_t setSyncWord(uint8_t* syncWord, size_t len) override;
 
     /*!
-      \brief Sets FSK sync word in the form of array of up to 8 bytes.
-      \param syncWord FSK sync word to be set.
-      \param bitsLen FSK sync word length in bits. If length is not divisible by 8,
-      least significant bits of syncWord will be ignored.
-      \returns \ref status_codes
-    */
-    int16_t setSyncBits(uint8_t *syncWord, uint8_t bitsLen);
-
-    /*!
       \brief Sets CRC configuration.
       \param len CRC length in bytes, Allowed values are 1 or 2, set to 0 to disable CRC.
       \param initial Initial CRC value. FSK only. Defaults to 0x1D0F (CCIT CRC).
@@ -697,7 +688,7 @@ class SX126x: public PhysicalLayer {
 
     /*!
       \brief Enable/disable inversion of the I and Q signals
-      \param enable QI inversion enabled (true) or disabled (false);
+      \param enable IQ inversion enabled (true) or disabled (false);
       \returns \ref status_codes
     */
     int16_t invertIQ(bool enable) override;
