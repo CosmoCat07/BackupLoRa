@@ -1,6 +1,6 @@
 //#define INITIATING_NODE
 
-#include<backupTest.hpp>
+#include "backupTest.hpp"
 
 // modem configuration
 #define FREQUENCY             915.000   // 
@@ -139,7 +139,7 @@ int main()
 
         // print data of the packet
         printf("[SX1262] Data:\t\t");
-        printf("%s \n", str);
+        printf("%s \n", (char*)str);
 
         // print RSSI (Received Signal Strength Indicator)
         printf("[SX1262] RSSI:\t\t");
@@ -152,6 +152,8 @@ int main()
         printf(" dB\n");
 
       }
+
+      radio.finishReceive();
 
       // wait a second before transmitting again
       hal->delay(1000);
